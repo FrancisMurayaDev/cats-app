@@ -1,13 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Cats App</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+
+    <div class="display-error">
+      <p class="display-error-text"></p>
+    </div>
+
+    <div class="main-container">
+      <h1>The Cats App</h1>
+
+      <div class="forms-container">
+        <div class="fact-form">
+          <form action="">
+            <label class="label" for="number-of-cats">number of cats facts (50 maximum)</label>
+            <input type="number" id="number-of-cats" placeholder="number of cat facts (50 max)">
+            <button class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        <div class="fact-form">
+          <form action="">
+            <label class="label" for="number-of-cats">number of cats photos (10 maximum)</label>
+            <input type="number" id="number-of-cats" placeholder="number of cat photos (10 max)">
+            <button class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="spinner" id="spinner" style="display: none;"></div>
+    <div class="display-facts" id="display-facts"></div>
+
+
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
