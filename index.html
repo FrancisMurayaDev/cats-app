@@ -16,7 +16,7 @@
   <body>
 
     <div class="display-error">
-      <p class="display-error-text"></p>
+      <p id="display-error-text"></p>
     </div>
 
     <div class="main-container">
@@ -24,18 +24,18 @@
 
       <div class="forms-container">
         <div class="fact-form">
-          <form action="">
+          <form id="facts-form" action="">
             <label class="label" for="number-of-cats">number of cats facts (50 maximum)</label>
-            <input type="number" id="number-of-cats" placeholder="number of cat facts (50 max)">
-            <button class="submit-btn">Submit</button>
+            <input type="number" class="number-of-cats fact-input" placeholder="number of cat facts (50 max)">
+            <button id="submit" class="submit-btn">Submit</button>
           </form>
         </div>
 
         <div class="fact-form">
-          <form action="">
+          <form id="photos-form" action="">
             <label class="label" for="number-of-cats">number of cats photos (10 maximum)</label>
-            <input type="number" id="number-of-cats" placeholder="number of cat photos (10 max)">
-            <button class="submit-btn">Submit</button>
+            <input type="number" class="number-of-cats image-input" placeholder="number of cat photos (10 max)">
+            <button id="submit" class="submit-btn">Submit</button>
           </form>
         </div>
 

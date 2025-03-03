@@ -43,7 +43,7 @@ h1 {
   font-weight: 700;
 }
 
-#number-of-cats {
+.number-of-cats {
   border: none;
   outline: none;
   padding: 1.3rem 1.5rem;
@@ -71,6 +71,18 @@ h1 {
     border-radius: 5px;
   }
 
+  #display-error-text {
+    text-align: center;
+    color: white;
+    background-color: red;
+    padding:10px 0;
+  }
+
+  .display-facts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 
 
