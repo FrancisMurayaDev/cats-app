@@ -2,83 +2,79 @@ const factForm = document.getElementById("facts-form");
 const photoForm = document.getElementById("photos-form");
 const displayFacts = document.getElementById("display-facts");
 const errorDisplay = document.getElementById("display-error-text");
-const submitButton = document.querySelector(`.submit-btn`);
-const factInput = document.querySelector(`.fact-input`);
+const factInput = document.querySelector(`.number-of-cats`);
 const imageInput = document.querySelector(`.image-input`);
+const factButton = document.querySelector(`#submit-fact`);
+const photoButton = document.querySelector(`#submit-photo`);
+const displayImage = document.querySelector(`.display-image`);
+let errorMessage = `Failed,try again later`;
 
-factForm.addEventListener(`submit`, async (e) => {
-  e.preventDefault();
-  displayFacts.innerHTML = ``;
-  errorDisplay.textContent = '';
-  const limit = parseInt(factInput.value) || 1;
-
-  if (limit < 1 || limit > 50) {
-    errorDisplay.textContent = `There was an error, please try again later`;
-
-    return;
-  }
-
+async function getCatFacts() {
+  displayFacts.innerHTML="";
+  displayImage.innerHTML = ``;
   try {
-    const response = await fetch(
-      `http://meowfacts.herokuapp.com/?count=${limit}`
-    );
-    const data = await response.json();
+    let catFacts = factInput.value || 1;
 
-    let listHTML = `<ol>`;
-    data.data.forEach((fact) => {
-      listHTML += `<li>${fact}</li>`;
+    if (catFacts > 50) {
+      catFacts = 50;
+    }
+    const response = await fetch(`http://meowfacts.herokuapp.com/?count=${catFacts}`);
+    const data = await response.json();
+    console.log(data.data);
+
+    // if (!response.ok) {
+    //   throw new Error(`Failed, Please try again later.`);
+    // }
+
+    let facts = Array.isArray(data.data) ? data.data : [data.data];
+    const factList = document.createElement(`ol`);
+    factList.style.paddingLeft = `4rem`;
+
+    facts.forEach((fact) => {
+      const listItem = document.createElement(`li`);
+      listItem.style.lineHeight = `2.2rem`;
+      listItem.style.fontSize = `1.3rem`;
+      listItem.textContent = fact;
+      factList.appendChild(listItem);
     });
 
-    listHTML += `</ol>`;
-
-    setTimeout(() => {
-      displayFacts.innerHTML = listHTML;
-    }, 2000);
+    displayFacts.appendChild(factList);
   } catch (error) {
-    errorDisplay.textContent = `There was an error, please try again later`;
-    console.error(error);
+    errorDisplay.classList.add(`error-box`);
+    errorDisplay.innerHTML=`<p class="error-message">${errorMessage}</P>`;
   }
-});
+}
 
 
-photoForm.addEventListener(`submit`, async (e) => {
-  e.preventDefault();
+async function getCatsImages() {
   displayFacts.innerHTML = ``;
-  errorDisplay.textContent = '';
-
-
-  const limit = parseInt(imageInput.value)  || 1;
-
-  if (limit < 1 || limit > 10) {
-    errorDisplay.textContent = `There was an error. Please try again later.`
-    errorDisplay.style.displayFacts = 'none';
-    return;
-  }
-
+  displayImage.innerHTML = ``;
   try {
-    const response = await fetch (`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
-    const data = await response.json();
-
-
-    let imagesHTML = `<div class="cat-img">`;
+    let catImage = imageInput.value || 1;
+    if(catImage > 10) {
+      catImage = 10;
+    }
+    const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${catImage}`);
+    const data=await response.json();
     data.forEach((cat) => {
-      if (cat.url) {
-        imagesHTML += `<img src="${cat.url}" alt="cat" width="200" style="object-fit: cover;">`;
-      }
-    });
-
-    imagesHTML += "</div>";
-
-    setTimeout(() => {
-      displayFacts.innerHTML = imagesHTML;
-    }, 2000);
-
+      const img=document.createElement(`img`);
+      img.src=cat.url;
+      img.alt=`A Cat`;
+      img.style.width= "19rem";
+      img.style.margin= `0.5rem`;
+      displayImage.appendChild(img);
+    })
   } catch (error) {
-    errorDisplay.textContent = "There was an error, please try again later.";
-    console.error(error);
+    errorDisplay.classList.add(`error-box`);
+    errorDisplay.innerHTML=`<p class="error-message">${errorMessage}</P>`;
+        
   }
+}
 
-})
+
+
+factButton.addEventListener(`click`, getCatFacts);
+photoButton.addEventListener(`click`, getCatsImages);
 
 
 

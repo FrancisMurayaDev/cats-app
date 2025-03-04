@@ -14,7 +14,6 @@
     />
   </head>
   <body>
-
     <div class="display-error">
       <p id="display-error-text"></p>
     </div>
@@ -24,28 +23,44 @@
 
       <div class="forms-container">
         <div class="fact-form">
-          <form id="facts-form" action="">
-            <label class="label" for="number-of-cats">number of cats facts (50 maximum)</label>
-            <input type="number" class="number-of-cats fact-input" placeholder="number of cat facts (50 max)">
-            <button id="submit" class="submit-btn">Submit</button>
-          </form>
+          <div id="facts-form">
+            <label class="label" for="number-of-cats"
+              >number of cats facts (50 maximum)</label
+            >
+            <input
+              type="number"
+              class="number-of-cats"
+              placeholder="number of cat facts (50 max)"
+            />
+            <button id="submit-fact" class="submit-btn">Submit</button>
+          </div>
         </div>
 
         <div class="fact-form">
-          <form id="photos-form" action="">
-            <label class="label" for="number-of-cats">number of cats photos (10 maximum)</label>
-            <input type="number" class="number-of-cats image-input" placeholder="number of cat photos (10 max)">
-            <button id="submit" class="submit-btn">Submit</button>
-          </form>
+          <div id="photos-form">
+            <label class="label" for="number-of-cats"
+              >number of cats photos (10 maximum)</label
+            >
+            <input
+              type="number"
+              class="number-of-cats image-input"
+              placeholder="number of cat photos (10 max)"
+            />
+            <button id="submit-photo" class="submit-btn">Submit</button>
+          </div>
         </div>
-
       </div>
     </div>
 
-    <div class="spinner" id="spinner" style="display: none;"></div>
-    <div class="display-facts" id="display-facts"></div>
+    <div class="spinner" id="spinner" style="display: none"></div>
+<div>
+  <div class="display-facts" id="display-facts"></div>
+  <div class="display-image"></div>
 
+</div>
+    
 
+   
 
     <script type="module" src="src/main.js"></script>
   </body>

@@ -71,7 +71,7 @@ h1 {
     border-radius: 5px;
   }
 
-  #display-error-text {
+  .error-box {
     text-align: center;
     color: white;
     background-color: red;
@@ -82,7 +82,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 1rem;
   }
 
+  .display-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  img{
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+  }
 
 
